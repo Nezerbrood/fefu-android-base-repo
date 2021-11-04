@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Activity Tracker</string>
+    <string name="heading_welcome_text">Пожалуй, лучший фитнес трекер в ДВФУ</string>
+    <string name="subheading_welcome_text">Созданный студентами 2-ого курса</string>
+    <string name="welcome_button_registration_text">Зарегистрироваться</string>
+    <string name="welcome_button_login_text">Уже есть аккаунт?</string>
+    <string name="login_input">Логин</string>
+    <string name="password_input">Пароль</string>
+    <string name="login_button_text">Войти</string>
+    <string name="login_title">Вход</string>
+    <string name="registration_title">Регистрация</string>
+    <string name="nickname_input">Имя или никнейм</string>
+    <string name="repassword_input">Повторите пароль</string>
+    <string name="registration_gender_title">Пол</string>
+    <string name="registration_button_registation">Зарегистрироваться</string>
+    <string name="registration_terms_and_privacy">
+        Нажимая на кнопку, вы соглашаетесь с <a href="http://google.com">политикой конфиденциальности</a> и обработки персональных данных, а также принимаете <a href="https://google.com">пользовательское соглашение.</a>
+    </string>
+    <string name="registration_radio_male">Мужской</string>
+    <string name="registrarion_radio_female">Женский</string>
+    <string name="registrarion_radio_other">Другое</string>
 </resources>
