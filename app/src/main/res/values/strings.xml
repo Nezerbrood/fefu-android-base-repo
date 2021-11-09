@@ -12,11 +12,17 @@
     <string name="nickname_input">Имя или никнейм</string>
     <string name="repassword_input">Повторите пароль</string>
     <string name="registration_gender_title">Пол</string>
-    <string name="registration_button_registation">Зарегистрироваться</string>
+    <string name="registration_button_registration">Зарегистрироваться</string>
     <string name="registration_terms_and_privacy">
         Нажимая на кнопку, вы соглашаетесь с <a href="http://google.com">политикой конфиденциальности</a> и обработки персональных данных, а также принимаете <a href="https://google.com">пользовательское соглашение.</a>
     </string>
     <string name="registration_radio_male">Мужской</string>
-    <string name="registrarion_radio_female">Женский</string>
-    <string name="registrarion_radio_other">Другое</string>
+    <string name="registration_radio_female">Женский</string>
+    <string name="registration_radio_other">Другое</string>
+    <string name="menu_profile">Профиль</string>
+    <string name="menu_activity">Активность</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_profile">Профиль</string>
+    <string name="title_workout">Активность</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>g>
 </resources>

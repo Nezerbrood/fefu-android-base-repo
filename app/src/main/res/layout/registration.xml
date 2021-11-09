@@ -176,7 +176,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:layout_weight="1"
-            android:text="@string/registrarion_radio_female" />
+            android:text="@string/registration_radio_female" />
 
         <RadioButton
             android:id="@+id/registration_radio_other"
@@ -184,7 +184,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:layout_weight="1"
-            android:text='@string/registrarion_radio_other' />
+            android:text='@string/registration_radio_other' />
     </RadioGroup>
     <com.google.android.material.button.MaterialButton
         style="@style/ButtonTheme"
@@ -197,7 +197,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/registration_button_registation"
+        android:text="@string/registration_button_registration"
         android:layout_marginTop="20sp"
         />
 

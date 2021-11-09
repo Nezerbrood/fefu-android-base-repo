@@ -17,5 +17,6 @@ class WelcomeActivity : AppCompatActivity() {
             val intent = Intent(this@WelcomeActivity, LoginActivity::class.java)
             startActivity(intent)
         }
+
     }
 }
