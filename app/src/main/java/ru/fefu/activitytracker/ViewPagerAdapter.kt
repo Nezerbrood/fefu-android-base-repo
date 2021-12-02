@@ -11,7 +11,7 @@ class ViewPagerAdapter(fragment: WorkoutFragment):FragmentStateAdapter(fragment)
         TheirWorkoutFragment()
     )
     val mFragmentNames: Array<String> = arrayOf(
-        "Мои",
+        "Моя",
         "Пользователей"
     )
     override fun getItemCount(): Int {

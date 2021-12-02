@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/workoutFragment">
+
+    <fragment
+        android:id="@+id/workoutFragment"
+        android:name="ru.fefu.activitytracker.WorkoutFragment"
+        android:label="WorkoutFragment" >
+        <action
+            android:id="@+id/action_workoutFragment_to_myActivityDetailsFragment"
+            app:destination="@id/myActivityDetailsFragment" />
+        <action
+            android:id="@+id/action_workoutFragment_to_theirActivityDetailsFragment"
+            app:destination="@id/theirActivityDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="ru.fefu.activitytracker.ProfileFragment"
+        android:label="fragment_profile" />
+    <fragment
+        android:id="@+id/myActivityDetailsFragment"
+        android:name="ru.fefu.activitytracker.MyActivityDetailsFragment"
+        android:label="fragment_profile" >
+        <action
+            android:id="@+id/action_myActivityDetailsFragment_to_workoutFragment"
+            app:destination="@id/workoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/theirActivityDetailsFragment"
+        android:name="ru.fefu.activitytracker.TheirActivityDetailsFragment"
+        android:label="TheirActivityDetailsFragment" >
+        <action
+            android:id="@+id/action_theirActivityDetailsFragment_to_workoutFragment"
+            app:destination="@id/workoutFragment" />
+    </fragment>
+</navigation>
