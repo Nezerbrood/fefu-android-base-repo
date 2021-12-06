@@ -1,4 +1,4 @@
-package ru.fefu.activitytracker
+package ru.fefu.activitytracker.activities
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -12,6 +12,7 @@ import android.text.TextPaint
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.Toast
+import ru.fefu.activitytracker.R
 
 
 class RegistrationActivity : AppCompatActivity() {
@@ -20,8 +21,7 @@ class RegistrationActivity : AppCompatActivity() {
         setContentView(R.layout.registration)
         val backButton : Button = findViewById(R.id.registration_button_back)
         backButton.setOnClickListener {
-            val intent = Intent(this@RegistrationActivity, WelcomeActivity::class.java)
-            startActivity(intent)
+            finish()
         }
         class MyClickableSpan : ClickableSpan() {
             override fun onClick(textView: View) {

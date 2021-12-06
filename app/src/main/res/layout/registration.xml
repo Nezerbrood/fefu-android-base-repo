@@ -16,50 +16,61 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         >
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
     <TextView
         android:id="@+id/registration_text_title"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_marginTop="16dp"
         android:gravity="center_vertical"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
         android:text="@string/registration_title"
         android:textColor="@color/black"
         android:textSize="20sp"
+        android:paddingStart="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/registration_button_back"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/top_line"
         tools:ignore="MissingConstraints" />
     <com.google.android.material.button.MaterialButton
         style="@style/ButtonTheme"
         android:id="@+id/registration_button_back"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:background="?android:attr/selectableItemBackground"
         android:drawableLeft="@drawable/ic_vector_back"
-        android:paddingStart="13dp"
-        android:paddingEnd="13dp"
         android:scaleX="1.4"
         android:scaleY="1.4"
         app:iconSize="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/registration_text_title"
+        app:layout_constraintStart_toEndOf="@id/left_line"
+        app:layout_constraintTop_toBottomOf="@id/top_line"
         />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/registration_login_input"
         app:layout_constraintTop_toBottomOf="@id/registration_text_title"
-        app:layout_constraintWidth_percent="0.9"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="60dp"
+        android:layout_marginTop="20dp"
         tools:ignore="MissingConstraints"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/left_line"
+        app:layout_constraintEnd_toEndOf="@id/right_line"
         >
         <com.google.android.material.textfield.TextInputEditText
             android:textSize="18sp"
@@ -74,12 +85,12 @@
         app:layout_constraintTop_toBottomOf="@id/registration_login_input"
         app:layout_constraintWidth_percent="0.9"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="10dp"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginTop="10dp"
         tools:ignore="MissingConstraints"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/left_line"
+        app:layout_constraintEnd_toEndOf="@id/right_line"
         >
         <com.google.android.material.textfield.TextInputEditText
             android:textSize="18sp"
@@ -92,15 +103,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/registration_password_input"
-        app:layout_constraintWidth_percent="0.9"
         android:layout_marginTop="10dp"
         android:layout_width="0dp"
         android:layout_height="60dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         tools:ignore="MissingConstraints"
         app:layout_constraintTop_toBottomOf="@id/registration_nickname_input"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/left_line"
+        app:layout_constraintEnd_toEndOf="@id/right_line"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/black"
         >
@@ -115,15 +125,14 @@
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/registration_repassort_input"
-        app:layout_constraintWidth_percent="0.9"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginTop="10dp"
         android:layout_width="0dp"
         android:layout_height="60dp"
         tools:ignore="MissingConstraints"
         app:layout_constraintTop_toBottomOf="@id/registration_password_input"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/left_line"
+        app:layout_constraintEnd_toEndOf="@id/right_line"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/black"
         >
@@ -140,25 +149,24 @@
         android:id="@+id/registration_gender_title"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_marginTop="0dp"
         android:gravity="center_vertical"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
         android:text="@string/registration_gender_title"
         android:textColor="@color/black"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/registration_repassort_input"
+        app:layout_constraintStart_toStartOf="@id/left_line"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="21dp" />
+        />
 
     <RadioGroup
         android:id="@+id/registration_radio_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
-        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintStart_toStartOf="@id/left_line"
         app:layout_constraintTop_toBottomOf="@+id/registration_gender_title"
         tools:ignore="MissingConstraints">
 
@@ -191,12 +199,10 @@
         android:id="@+id/registration_button_registration"
         android:layout_width="0dp"
         android:layout_height="60sp"
-        tools:ignore="MissingConstraints"
+        app:layout_constraintStart_toStartOf="@id/left_line"
+        app:layout_constraintEnd_toStartOf="@id/right_line"
         app:layout_constraintWidth_percent="0.8"
         app:layout_constraintTop_toBottomOf="@id/registration_radio_group"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:text="@string/registration_button_registration"
         android:layout_marginTop="20sp"
         />
@@ -206,11 +212,11 @@
         android:linksClickable="true"
         android:id="@+id/registration_terms_and_privacy"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.95"
+        app:layout_constraintStart_toStartOf="@id/left_line"
+        app:layout_constraintEnd_toStartOf="@id/right_line"
         android:layout_height="wrap_content"
         android:text="@string/registration_terms_and_privacy"
         android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintTop_toBottomOf="@id/registration_button_registration"
