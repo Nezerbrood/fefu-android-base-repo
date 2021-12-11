@@ -1,33 +1,31 @@
-package ru.fefu.activitytracker
+package ru.fefu.activitytracker.adapters
 
 import android.annotation.SuppressLint
-import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import ru.fefu.activitytracker.dataclasses.ActivityData
+import ru.fefu.activitytracker.dataclasses.DateData
+import ru.fefu.activitytracker.R
+import ru.fefu.activitytracker.dataclasses.UserActivityData
 import java.time.Duration
 import java.time.LocalDateTime
 
-class RecyclerAdapter(private val activities: List<Any>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
+class ActivitiesListRecyclerAdapter(private val activities: List<Any>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var ItemClickListener: (Int) -> Unit = {}
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): RecyclerView.ViewHolder {
         return when (viewType) {
             0 -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.my_workout_item, parent, false)
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.my_activity_item, parent, false)
                 ActivityViewHolder(view)
             }
             1 -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.their_workout_item, parent, false)
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.their_activity_item, parent, false)
                 UserActivityViewHolder(view)
             }
             else -> {
@@ -93,8 +91,6 @@ class RecyclerAdapter(private val activities: List<Any>) : RecyclerView.Adapter<
                 ItemClickListener.invoke(position)
             }
         }
-
-        @SuppressLint("SetTextI18n")
         fun bind(activity: ActivityData) {
             distance.text = activity.distance
             type.text = activity.activityType
@@ -132,7 +128,6 @@ class RecyclerAdapter(private val activities: List<Any>) : RecyclerView.Adapter<
             }
         }
 
-        @SuppressLint("SetTextI18n")
         fun bind(activity: UserActivityData) {
             distance.text = activity.distance
             type.text = activity.activityType
@@ -159,8 +154,6 @@ class RecyclerAdapter(private val activities: List<Any>) : RecyclerView.Adapter<
 
     inner class DateViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val date = itemView.findViewById<TextView>(R.id.date_label)
-
-        @SuppressLint("SetTextI18n")
         fun bind(date_: DateData) {
             date.text = date_.Date
         }

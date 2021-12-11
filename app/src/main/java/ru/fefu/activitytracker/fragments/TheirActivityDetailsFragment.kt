@@ -1,4 +1,4 @@
-package ru.fefu.activitytracker
+package ru.fefu.activitytracker.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import ru.fefu.activitytracker.R
 import ru.fefu.activitytracker.databinding.TheirActivityDetailsBinding
 
 class TheirActivityDetailsFragment: Fragment() {
@@ -33,7 +34,8 @@ class TheirActivityDetailsFragment: Fragment() {
 
         binding.toolbar.setNavigationOnClickListener {
             //activity?.onBackPressed()
-            findNavController().navigate(R.id.action_theirActivityDetailsFragment_to_workoutFragment)
+            //findNavController().navigate(R.id.action_theirActivityDetailsFragment_to_workoutFragment)
+            findNavController().popBackStack()
         }
     }
 

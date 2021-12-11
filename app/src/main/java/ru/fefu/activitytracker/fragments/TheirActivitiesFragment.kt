@@ -1,4 +1,4 @@
-package ru.fefu.activitytracker
+package ru.fefu.activitytracker.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -8,12 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import ru.fefu.activitytracker.R.layout.fragment_their_workout
-import ru.fefu.activitytracker.databinding.FragmentTheirWorkoutBinding
+import ru.fefu.activitytracker.dataclasses.ActivityData
+import ru.fefu.activitytracker.dataclasses.DateData
+import ru.fefu.activitytracker.R
+import ru.fefu.activitytracker.dataclasses.UserActivityData
+import ru.fefu.activitytracker.adapters.ActivitiesListRecyclerAdapter
+import ru.fefu.activitytracker.databinding.FragmentTheirActivitiesBinding
 import java.time.LocalDateTime
 
-class TheirWorkoutFragment : Fragment() {
-    private var _binding: FragmentTheirWorkoutBinding? = null
+class TheirActivitiesFragment : Fragment() {
+    private var _binding: FragmentTheirActivitiesBinding? = null
     private val binding get() = _binding!!
     private lateinit var items: MutableList<ActivityData>
     val activities = listOf<UserActivityData>(
@@ -57,7 +61,7 @@ class TheirWorkoutFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentTheirWorkoutBinding.inflate(inflater, container, false)
+        _binding = FragmentTheirActivitiesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -85,7 +89,7 @@ class TheirWorkoutFragment : Fragment() {
         }
     }
 
-    private val adapter = RecyclerAdapter(data_activities)
+    private val adapter = ActivitiesListRecyclerAdapter(data_activities)
 
     /*private fun changeFragment(position: Int) {
         if (position in data_activities.indices) {

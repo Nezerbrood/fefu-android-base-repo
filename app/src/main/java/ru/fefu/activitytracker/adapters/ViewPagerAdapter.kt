@@ -1,14 +1,15 @@
-package ru.fefu.activitytracker
+package ru.fefu.activitytracker.adapters
 
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import ru.fefu.activitytracker.fragments.MyActivitiesFragment
+import ru.fefu.activitytracker.fragments.TheirActivitiesFragment
+import ru.fefu.activitytracker.fragments.MainActivitiesFragment
 import androidx.fragment.app.Fragment as Fragment
 
-class ViewPagerAdapter(fragment: WorkoutFragment):FragmentStateAdapter(fragment) {
+class ViewPagerAdapter(fragment: MainActivitiesFragment):FragmentStateAdapter(fragment) {
     private val mFragments: Array<Fragment> = arrayOf(
-        MyWorkoutFragment(),
-        TheirWorkoutFragment()
+        MyActivitiesFragment(),
+        TheirActivitiesFragment()
     )
     val mFragmentNames: Array<String> = arrayOf(
         "Моя",

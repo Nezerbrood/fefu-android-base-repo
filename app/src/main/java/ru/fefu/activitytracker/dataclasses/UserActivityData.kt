@@ -1,4 +1,4 @@
-package ru.fefu.activitytracker
+package ru.fefu.activitytracker.dataclasses
 
 import java.time.LocalDateTime
 
