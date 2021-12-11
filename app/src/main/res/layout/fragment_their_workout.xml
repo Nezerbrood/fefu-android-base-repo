@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/their_recycler_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".TheirWorkoutFragment"
-    android:text="Активность других пользователей"
-    android:backgroundTint="@color/black"
-    android:gravity="center">
-
-</TextView>
+    android:layout_height="match_parent" />

@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_workout"
+        android:id="@+id/workoutFragment"
         android:icon="@drawable/ic_workout"
         android:title="@string/title_workout" />
 
     <item
-        android:id="@+id/navigation_profile"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile"
         android:title="@string/title_profile" />
 

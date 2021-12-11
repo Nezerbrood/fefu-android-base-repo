@@ -15,7 +15,9 @@ class WorkoutFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_workout, container, false)
     }
+    private fun setupNavigation(){
 
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val mViewPager = view.findViewById<ViewPager2>(R.id.workout_view_pager2)
         mViewPager.adapter=(ViewPagerAdapter(this))
