@@ -1,4 +1,4 @@
-package ru.fefu.activitytracker
+package ru.fefu.activitytracker.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,15 +8,15 @@ import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-class WorkoutFragment : Fragment() {
+import ru.fefu.activitytracker.R
+import ru.fefu.activitytracker.adapters.ViewPagerAdapter
+
+class MainActivitiesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_workout, container, false)
-    }
-    private fun setupNavigation(){
-
+        return inflater.inflate(R.layout.fragment_activities, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val mViewPager = view.findViewById<ViewPager2>(R.id.workout_view_pager2)
@@ -26,7 +26,7 @@ class WorkoutFragment : Fragment() {
 
         ) { tab, position ->
             tab.text =
-                ((mViewPager.adapter) as ViewPagerAdapter?)!!.mFragmentNames[position] //Sets tabs names as mentioned in ViewPagerAdapter fragmentNames array, this can be implemented in many different ways.
+                ((mViewPager.adapter) as ViewPagerAdapter?)!!.mFragmentNames[position]
         }.attach()
     }
 }

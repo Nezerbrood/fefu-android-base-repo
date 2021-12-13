@@ -1,23 +1,26 @@
-package ru.fefu.activitytracker
+package ru.fefu.activitytracker.fragments
 
-import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import ru.fefu.activitytracker.databinding.FragmentMyWorkoutBinding
-import java.time.Duration
+import ru.fefu.activitytracker.dataclasses.ActivityData
+import ru.fefu.activitytracker.dataclasses.DateData
+import ru.fefu.activitytracker.R
+import ru.fefu.activitytracker.adapters.ActivitiesListRecyclerAdapter
+import ru.fefu.activitytracker.databinding.FragmentMyActivitiesBinding
 import java.time.LocalDateTime
 
-class MyWorkoutFragment : Fragment(R.layout.fragment_my_workout) {
-    private var _binding: FragmentMyWorkoutBinding? = null
+class MyActivitiesFragment : Fragment(R.layout.fragment_my_activities) {
+    private var _binding: FragmentMyActivitiesBinding? = null
     private val binding get() = _binding!!
     private lateinit var items: MutableList<ActivityData>
+    val data_activities = mutableListOf<Any>()
+    private val adapter = ActivitiesListRecyclerAdapter(data_activities)
     val activities = listOf<ActivityData>(
         ActivityData(
             "1000 м",
@@ -61,11 +64,9 @@ class MyWorkoutFragment : Fragment(R.layout.fragment_my_workout) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMyWorkoutBinding.inflate(inflater, container, false)
+        _binding = FragmentMyActivitiesBinding.inflate(inflater, container, false)
         return binding.root
     }
-
-    val data_activities = mutableListOf<Any>()
     private fun fill_date(activities: List<ActivityData>) {
         val cur = LocalDateTime.now()
         var date = DateData("")
@@ -88,25 +89,6 @@ class MyWorkoutFragment : Fragment(R.layout.fragment_my_workout) {
             data_activities.add(activity)
         }
     }
-
-    private val adapter = RecyclerAdapter(data_activities)
-
-    /*private fun changeFragment(position: Int) {
-        if (position in data_activities.indices) {
-            val manager = activity?.supportFragmentManager?.findFragmentByTag(ActivityTabs.tag)?.childFragmentManager
-            manager?.beginTransaction()?.apply {
-                manager.fragments.forEach(::hide)
-                add (
-                    R.id.activity_fragment_container,
-                    MyActivityInfo.newInstance(),
-                    MyActivityInfo.tag,
-                )
-                addToBackStack(null)
-                commit()
-            }
-        }
-    }*/
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -116,6 +98,9 @@ class MyWorkoutFragment : Fragment(R.layout.fragment_my_workout) {
         recycleView.adapter = adapter
         adapter.setItemClickListener {position: Int ->
             findNavController().navigate(R.id.action_workoutFragment_to_myActivityDetailsFragment)
+        }
+        binding.startActivity.setOnClickListener {
+            findNavController().navigate(R.id.action_workoutFragment_to_newActivityFragment)
         }
     }
 

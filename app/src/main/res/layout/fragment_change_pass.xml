@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.065" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/old_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="40dp"
+        app:layout_constraintEnd_toEndOf="@id/right_line"
+        app:layout_constraintStart_toStartOf="@id/left_line"
+        app:layout_constraintTop_toBottomOf="@id/top_line">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:hint="Старый пароль"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/new_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        app:layout_constraintEnd_toEndOf="@id/right_line"
+        app:layout_constraintStart_toStartOf="@id/left_line"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/old_password">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:hint="Новый пароль"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/new_password2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        app:layout_constraintEnd_toEndOf="@id/right_line"
+        app:layout_constraintStart_toStartOf="@id/left_line"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/new_password">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:hint="Повторите пароль"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonContinue"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="#4B09F3"
+        android:fontFamily="sans-serif"
+        android:text="Принять"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@id/right_line"
+        app:layout_constraintStart_toStartOf="@id/left_line"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@id/new_password2" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_vector_back"
+        app:title="Изменить пароль"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
