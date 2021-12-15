@@ -6,9 +6,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import ru.fefu.activitytracker.App
 import ru.fefu.activitytracker.R
 import ru.fefu.activitytracker.databinding.NewActivityFragmentBinding
 import ru.fefu.activitytracker.adapters.NewActivityTypeListAdapter
+import ru.fefu.activitytracker.room.Activity
+import java.time.LocalDateTime
+import kotlin.random.Random
 
 class NewActivityFragment:Fragment() {
     private var _binding: NewActivityFragmentBinding? = null
@@ -42,7 +46,17 @@ class NewActivityFragment:Fragment() {
         binding.buttonContinue.setOnClickListener {
             if(adapter.selected!=-1)
             {
-                findNavController().navigate(R.id.action_newActivityFragment_to_startedActivityFragment)
+
+                App.INSTANCE.db.activityDao().insert(Activity(0, adapter.selected,
+                    System.currentTimeMillis(),System.currentTimeMillis()+1000000,
+                    listOf(Pair(
+                        Random.nextDouble(43.566651, 43.626951),
+                        Random.nextDouble(131.987517, 131.998417))
+                        ,Pair(Random.nextDouble(43.566651, 43.626951),
+                            Random.nextDouble(131.987517, 131.998417))),
+                    ""))
+                    findNavController().popBackStack()
+                //findNavController().navigate(R.id.action_newActivityFragment_to_startedActivityFragment)
             }
         }
     }

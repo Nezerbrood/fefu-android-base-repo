@@ -1,6 +1,7 @@
 package ru.fefu.activitytracker.adapters
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -80,6 +81,7 @@ class ActivitiesListRecyclerAdapter(private val activities: List<Any>) : Recycle
     }
 
     inner class ActivityViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        private var id: Int = -1
         private val distance = itemView.findViewById<TextView>(R.id.distance)
         private val duration = itemView.findViewById<TextView>(R.id.duration)
         private val type = itemView.findViewById<TextView>(R.id.activity_type)
@@ -91,7 +93,11 @@ class ActivitiesListRecyclerAdapter(private val activities: List<Any>) : Recycle
                 ItemClickListener.invoke(position)
             }
         }
+        fun getId(): Int{
+            return id
+        }
         fun bind(activity: ActivityData) {
+            id = activity.id
             distance.text = activity.distance
             type.text = activity.activityType
             val duration_ = Duration.between(activity.endDate, activity.startDate);
@@ -102,6 +108,7 @@ class ActivitiesListRecyclerAdapter(private val activities: List<Any>) : Recycle
             val hours_ = getNoun(hours, "час", "часа", "часов")
             val minutes_ = getNoun(minutes, "минута", "минуты", "минут")
             duration.text = hours.toString() + ' ' +hours_ + ' ' +minutes.toString() + ' '+ minutes_
+            Log.d("fsdf",activity.endDate.toString())
             if (LocalDateTime.now().year == activity.endDate.year &&
                 LocalDateTime.now().monthValue == activity.endDate.monthValue &&
                 LocalDateTime.now().dayOfMonth == activity.endDate.dayOfMonth) {
@@ -115,6 +122,7 @@ class ActivitiesListRecyclerAdapter(private val activities: List<Any>) : Recycle
     }
 
     inner class UserActivityViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        var id = -1
         private val distance = itemView.findViewById<TextView>(R.id.distance)
         private val duration = itemView.findViewById<TextView>(R.id.duration)
         private val type = itemView.findViewById<TextView>(R.id.activity_type)
@@ -129,6 +137,7 @@ class ActivitiesListRecyclerAdapter(private val activities: List<Any>) : Recycle
         }
 
         fun bind(activity: UserActivityData) {
+            id = activity.id
             distance.text = activity.distance
             type.text = activity.activityType
             user.text = activity.user
@@ -158,4 +167,6 @@ class ActivitiesListRecyclerAdapter(private val activities: List<Any>) : Recycle
             date.text = date_.Date
         }
     }
+
+
 }

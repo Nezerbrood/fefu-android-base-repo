@@ -20,8 +20,8 @@ class TheirActivitiesFragment : Fragment() {
     private var _binding: FragmentTheirActivitiesBinding? = null
     private val binding get() = _binding!!
     private lateinit var items: MutableList<ActivityData>
-    val activities = listOf<UserActivityData>(
-        UserActivityData(
+    val activities = listOf<UserActivityData>()
+        /*UserActivityData(
             "1000 м",
             "Серфинг",
             LocalDateTime.now(),
@@ -48,8 +48,8 @@ class TheirActivitiesFragment : Fragment() {
             LocalDateTime.of(2021, 10, 27, 11, 22),
             LocalDateTime.of(2021, 10, 28, 12, 40),
             "@gagaved"
-        ),
-    )
+        ),*/
+
 
     val map = mapOf(1 to "Январь", 2 to "Февраль", 3 to "Март",
         4 to "Апрель", 5 to "Май", 6 to "Июнь",
