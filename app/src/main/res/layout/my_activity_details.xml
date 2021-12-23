@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_constraint"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -114,7 +118,6 @@
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@id/finish"
         app:layout_constraintTop_toBottomOf="@+id/duration" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/comment"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -123,14 +126,15 @@
         android:layout_marginTop="20dp"
         android:layout_marginHorizontal="20dp"
         app:boxBackgroundColor="@color/white"
-
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start">
+        app:layout_constraintTop_toBottomOf="@+id/start"
+        android:focusableInTouchMode="true"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/my_activity_comment_edit"
+            android:text=""
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Комментарий" />

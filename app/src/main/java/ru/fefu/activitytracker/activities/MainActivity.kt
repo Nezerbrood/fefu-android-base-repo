@@ -1,6 +1,9 @@
 package ru.fefu.activitytracker.activities
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -14,6 +17,5 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_nav_view)
         val navController: NavController = findNavController(R.id.nav_host_fragment)
         NavigationUI.setupWithNavController(bottomNavigation,navController)
-
     }
 }
