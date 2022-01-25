@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_workoutFragment_to_newActivityFragment"
             app:destination="@id/newActivityFragment" />
+        <action
+            android:id="@+id/action_workoutFragment_to_startedActivityFragment"
+            app:destination="@id/startedActivityFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"

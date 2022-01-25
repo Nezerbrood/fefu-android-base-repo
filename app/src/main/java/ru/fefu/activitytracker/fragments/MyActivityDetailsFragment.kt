@@ -2,41 +2,24 @@ package ru.fefu.activitytracker.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import ru.fefu.activitytracker.App
-import ru.fefu.activitytracker.R
 import ru.fefu.activitytracker.adapters.ActivitiesListRecyclerAdapter
 import ru.fefu.activitytracker.databinding.MyActivityDetailsBinding
-import ru.fefu.activitytracker.dataclasses.ActivityData
-import ru.fefu.activitytracker.dataclasses.DateData
 import ru.fefu.activitytracker.enums.ActivityTypeEnum
-import ru.fefu.activitytracker.room.Activity
+import ru.fefu.activitytracker.room.ActivityRoom
 import java.time.Duration
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
 import android.text.Editable
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import androidx.core.content.ContextCompat
-import androidx.core.widget.doAfterTextChanged
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.content.ContextCompat.getSystemService
-
-
-
-
-
-
 
 
 class MyActivityDetailsFragment: Fragment() {
@@ -52,16 +35,16 @@ class MyActivityDetailsFragment: Fragment() {
         }
     }
     private fun fillDate() {
-        val activity_id = arguments!!.getInt("ActivityID")
-        val activity_from_db: Activity = App.INSTANCE.db.activityDao().getById(activity_id).get(0)!!
-        val startDate = LocalDateTime.ofInstant(Instant.ofEpochMilli(activity_from_db.dateStart), ZoneId.systemDefault())
-        val endDate = LocalDateTime.ofInstant(Instant.ofEpochMilli(activity_from_db.dateEnd), ZoneId.systemDefault())
-        val type = ActivityTypeEnum.values()[activity_from_db.type].type
+        val activity_id = arguments!!.getInt("id_")
+        val activity_Room_from_db: ActivityRoom = App.INSTANCE.db.activityDao().getById(activity_id)!!
+        val startDate = LocalDateTime.ofInstant(Instant.ofEpochMilli(activity_Room_from_db.dateStart), ZoneId.systemDefault())
+        val endDate = LocalDateTime.ofInstant(Instant.ofEpochMilli(activity_Room_from_db.dateEnd), ZoneId.systemDefault())
+        val type = ActivityTypeEnum.values()[activity_Room_from_db.type].type
         val distance = (1..20).random().toString() + " км"
         val cur = LocalDateTime.now()
         binding.distance.text = distance
         binding.toolbar.title = type
-        binding.myActivityCommentEdit.setText(activity_from_db.comment)
+        binding.myActivityCommentEdit.setText(activity_Room_from_db.comment)
         val duration_ = Duration.between(endDate, startDate);
         var seconds: Long = Math.abs(duration_.getSeconds())
         val hours = seconds / 3600
@@ -101,9 +84,9 @@ class MyActivityDetailsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val activity_id = arguments!!.getInt("ActivityID")
         fillDate()
-        binding.toolbar.setNavigationOnClickListener {
-            findNavController().popBackStack()
-        }
+            binding.toolbar.setNavigationOnClickListener {
+                findNavController().popBackStack()
+            }
         binding.myActivityCommentEdit.addTextChangedListener( object :TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 App.INSTANCE.db.activityDao().setCommentById(activity_id,binding.myActivityCommentEdit.text.toString())
