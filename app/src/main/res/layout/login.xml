@@ -49,6 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         >
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login"
             android:textSize="18sp"
             android:hint="@string/login_input"
             android:paddingEnd="0dp"
@@ -57,7 +58,7 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password_text_input"
+        android:id="@+id/login_password_text_input"
         app:layout_constraintWidth_percent="0.9"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginTop="10dp"
@@ -71,6 +72,7 @@
         app:passwordToggleTint="@color/black"
         >
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
             android:textSize="18sp"
             android:inputType="textPassword"
             android:hint="@string/password_input"
@@ -85,7 +87,7 @@
         android:layout_width="0dp"
         android:layout_height="60sp"
         tools:ignore="MissingConstraints"
-        app:layout_constraintTop_toBottomOf="@id/password_text_input"
+        app:layout_constraintTop_toBottomOf="@id/login_password_text_input"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         app:layout_constraintEnd_toEndOf="@id/right_line"
