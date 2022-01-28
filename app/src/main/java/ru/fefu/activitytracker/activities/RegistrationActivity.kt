@@ -58,9 +58,20 @@ class RegistrationActivity : AppCompatActivity() {
                     val intent = Intent(this@RegistrationActivity, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
-                }
-                else if (it is Result.Error<TokenUserModel>) {
-                    Toast.makeText(this, it.e.toString(), Toast.LENGTH_LONG).show()
+                } else if (it is Result.Error<TokenUserModel>) {
+                    //Toast.makeText(this, it.e.toString(), Toast.LENGTH_LONG).show()
+                    var error = it.e
+                    if (error is retrofit2.HttpException) {
+                        if (error.response()?.code() == 422){
+                            Toast.makeText(this,
+                                "Такое значение поля «login» уже используется.",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }else{
+
+                    }
+                }else{
                 }
             }
             .launchIn(lifecycleScope)
@@ -81,22 +92,31 @@ class RegistrationActivity : AppCompatActivity() {
                     .editText?.text.toString()
             val registrationRadioGroup = findViewById<RadioGroup>(R.id.registration_radio_group)
             var gender = -1
-            if (login.isEmpty() || password.isEmpty() || name.isEmpty()|| registrationRadioGroup.checkedRadioButtonId == -1) {
-                Toast.makeText(this, "Не все поля заполнены!", Toast.LENGTH_LONG).show()
-            } else if (password != password_repeat)
-            {
-                Toast.makeText(this, "Пароли не совпадают!", Toast.LENGTH_LONG).show()
-            }
-        else {
-                var gender = when (R.id.registration_radio_male) {
-                    registrationRadioGroup.checkedRadioButtonId -> {
-                        0
-                    }
-                    else -> {
-                        1
-                    }
+            when {
+                login.length<3 -> {
+                    Toast.makeText(this, "Длина логина должна быть от 3 символов", Toast.LENGTH_LONG).show()
                 }
-                viewModel.register(login, password, name, gender)
+                password.length<8 -> {
+                    Toast.makeText(this, "Длина пароля должна быть от 8 символов", Toast.LENGTH_LONG).show()
+                }
+                name.isEmpty() -> {
+                    Toast.makeText(this, "Поле имени не может быть пустым", Toast.LENGTH_LONG).show()
+                }
+                registrationRadioGroup.checkedRadioButtonId == -1 -> Toast.makeText(this, "Укажите пол", Toast.LENGTH_LONG).show()
+                password != password_repeat -> {
+                    Toast.makeText(this, "Пароли не совпадают!", Toast.LENGTH_LONG).show()
+                }
+                else -> {
+                    var gender = when (R.id.registration_radio_male) {
+                        registrationRadioGroup.checkedRadioButtonId -> {
+                            0
+                        }
+                        else -> {
+                            1
+                        }
+                    }
+                    viewModel.register(login, password, name, gender)
+                }
             }
 
         }

@@ -20,10 +20,7 @@ class RegistrationViewModel:ViewModel() {
         viewModelScope.launch {
             loginRepository.register(login, password, name, gender)
                 .collect {
-                    when(it) {
-                        is Result.Success<*> -> _dataFlow.emit(it)
-                        is Result.Error<*> -> _dataFlow.emit(it)
-                    }
+                    _dataFlow.emit(it)
                 }
         }
     }
