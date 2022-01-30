@@ -31,6 +31,7 @@ class App : Application() {
             })
             .build()
     }
+
     val retrofit by lazy {
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
