@@ -185,14 +185,6 @@
             android:textSize="18sp"
             android:layout_weight="1"
             android:text="@string/registration_radio_female" />
-
-        <RadioButton
-            android:id="@+id/registration_radio_other"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_weight="1"
-            android:text='@string/registration_radio_other' />
     </RadioGroup>
     <com.google.android.material.button.MaterialButton
         style="@style/ButtonTheme"
